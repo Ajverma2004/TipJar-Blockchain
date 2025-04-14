@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -41,6 +42,10 @@ body {
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --beige: 39 77% 96%;
+    --soft-gray: 0 0% 83%;
+    --teal: 180 100% 25%;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -75,6 +80,16 @@ body {
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --beige: 39 77% 14%;
+    --soft-gray: 0 0% 17%;
+    --teal: 180 100% 75%;
+  }
+
+  :root {
+    --background: hsl(var(--beige));
+    --foreground: hsl(var(--foreground));
+    --accent: hsl(var(--teal));
   }
 }
 
@@ -86,3 +101,4 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
