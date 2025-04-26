@@ -1,69 +1,65 @@
+"use client";
 
-'use client';
-
-import { useState } from 'react';
-import Link from 'next/link'; // Import Link from next/link
-import StaffList from '@/components/StaffList';
-import TipForm from '@/components/TipForm';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import React from 'react';
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
 
-const staffMembers = ['Alice', 'Bob', 'Charlie', 'David', 'Eve'];
+// Main Page Component
+const HomePage: React.FC = () => {
 
-export default function Home() {
-  const [selectedStaff, setSelectedStaff] = useState<string | null>(null);
-  // The TipForm now handles its own confirmation/status display
-  // const [submissionConfirmation, setSubmissionConfirmation] = useState<string | null>(null); 
-  const { toast } = useToast();
+    return (
+        <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+            <Card className="w-full max-w-lg shadow-xl rounded-xl overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6">
+                    <div className="flex items-center space-x-4">
+                        <Avatar className="w-12 h-12 border-2 border-white bg-gradient-to-tr from-pink-400 to-orange-400 rounded-full flex items-center justify-center"> 
+                            {/* Colorful Fallback */} 
+                            <AvatarFallback className="text-white font-bold text-xl">TJ</AvatarFallback>
+                        </Avatar>
+                        <div>
+                            <CardTitle className="text-3xl font-bold">Welcome to TipJar!</CardTitle>
+                            <CardDescription className="text-blue-100">Send tips directly on the blockchain.</CardDescription>
+                        </div>
+                    </div>
+                </CardHeader>
+                <CardContent className="p-6 space-y-4">
+                    <p className="text-center text-gray-700 mb-6">
+                        Select a staff member and send them a tip in ETH directly using the Sepolia test network.
+                    </p>
+                    
+                    {/* Buttons to navigate */}
+                    <div className="flex flex-col sm:flex-row justify-center gap-4">
+                        <Link href="/payments" passHref>
+                            <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1"> 
+                                Go to Tipping Page
+                            </Button>
+                        </Link>
+                        <Link href="/history" passHref>
+                             <Button size="lg" variant="outline" className="w-full sm:w-auto"> 
+                                View Transaction History
+                            </Button>
+                        </Link>
+                    </div>
+                </CardContent>
+                <CardFooter className="bg-gray-50 p-4 text-center">
+                     <p className="text-xs text-gray-500">Ensure your wallet is connected to the Sepolia testnet.</p>
+                </CardFooter>
+            </Card>
+        </div>
+    );
+};
 
-  const handleStaffSelect = (staffName: string) => {
-    setSelectedStaff(staffName);
-    // setSubmissionConfirmation(null); // Clear previous confirmation
-  };
-
-  // This onSubmit might not be needed anymore if TipForm handles everything via contract
-  // Or, you could use it for non-blockchain actions after a successful contract transaction
-  // For now, we remove the confirmation logic here as TipForm shows status
-  const handleTipFormSubmit = (name: string, phone: string, amount: number) => {
-      console.log("TipForm onSubmit callback triggered (from page.tsx)", { name, phone, amount });
-      // Example: maybe log this to an internal analytics service after success
-      // toast({ title: "Callback Received", description: "Tip submitted successfully via contract." });
-  };
-
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <Card className="w-full max-w-md space-y-4">
-        <CardHeader>
-          <CardTitle className="text-2xl text-center">TipJar DApp</CardTitle> {/* Updated Title */}
-        </CardHeader>
-        <CardContent className="flex flex-col space-y-6"> {/* Increased spacing */}
-          
-          {/* Button to navigate to Payment History page */}
-          <div className="text-center">
-            <Link href="/payments" passHref>
-              <Button variant="outline">View Payment History</Button>
-            </Link>
-          </div>
-
-          <StaffList staff={staffMembers} onSelect={handleStaffSelect} selectedStaff={selectedStaff} />
-          
-          {selectedStaff && (
-            // Pass the handleTipFormSubmit only if needed for *additional* actions 
-            // after TipForm confirms blockchain success. Otherwise, remove onSubmit prop.
-            <TipForm selectedStaff={selectedStaff} /* onSubmit={handleTipFormSubmit} */ />
-          )}
-          
-          {/* Remove local confirmation message, TipForm handles its own status */}
-          {/* {submissionConfirmation && (...)} */}
-
-          {!selectedStaff && (
-            <div className="text-center text-gray-500 pt-4"> {/* Added padding */}
-              Please select a staff member to tip.
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
+export default HomePage;

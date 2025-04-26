@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Alice",
+    "address": "0x44C862c2c62B3b4f618221F782eE39B0792eD2f2" 
+  },
+  {
+    "name": "Bob",
+    "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+  },
+  {
+    "name": "Charlie",
+    "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+  },
+  {
+    "name": "David",
+    "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+  },
+  {
+    "name": "Eve",
+    "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+  }
+]
