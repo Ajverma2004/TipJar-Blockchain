@@ -70,7 +70,7 @@ touch .env.local
 Add your variables:
 
 ```env
-NEXT_PUBLIC_ALCHEMY_RPC_URL=your-alchemy-key-here
+SEPOLIA_RPC_URL=your-alchemy-key-here
 ```
 
 4. **Run the App**
