@@ -5,10 +5,10 @@ import Link from 'next/link';
 import TipForm from '@/components/TipForm';
 import StaffList from '@/components/StaffList';
 import { Toaster } from "@/components/ui/toaster";
-import { Button } from "@/components/ui/button"; // Import Button
-import staffJsonData from '@/staffs.json'; // Import staff data
+import { Button } from "@/components/ui/button";
+import staffJsonData from '@/staffs.json'; 
 
-// Define a type for staff members for better type safety
+
 interface StaffMember {
   name: string;
   address: string;
@@ -21,8 +21,8 @@ const PaymentsPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setIsLoading(true); // Ensure loading starts true
-    setError(null);    // Clear previous errors
+    setIsLoading(true); 
+    setError(null);    
     try {
       console.log("[PaymentsPage] useEffect: Processing staff data...");
       if (!Array.isArray(staffJsonData)) {
@@ -44,12 +44,12 @@ const PaymentsPage: React.FC = () => {
     } catch (e: any) {
       console.error("[PaymentsPage] Error processing staff data:", e);
       setError(e.message || "An unexpected error occurred while loading staff data.");
-      setStaffNames([]); // Set to empty array on error
+      setStaffNames([]); 
     } finally {
       setIsLoading(false);
       console.log("[PaymentsPage] useEffect: Finished processing staff data.");
     }
-  }, []); // Run only once on component mount
+  }, []); 
 
   const handleSelectStaff = (staffName: string) => {
     setSelectedStaff(staffName);
@@ -66,7 +66,6 @@ const PaymentsPage: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      {/* Navigation Header */}
       <div className="flex justify-between items-center mb-6 pb-4 border-b">
           <h1 className="text-2xl font-bold">Send a Tip</h1>
           <div className="flex gap-2">
@@ -80,7 +79,6 @@ const PaymentsPage: React.FC = () => {
       </div>
 
       <div className="flex flex-col md:flex-row gap-8">
-          {/* Staff List Sidebar */}
           <aside className="w-full md:w-1/4">
             <h2 className="text-xl font-semibold mb-4">Select Staff</h2>
             <StaffList 
@@ -90,11 +88,10 @@ const PaymentsPage: React.FC = () => {
             />
           </aside>
 
-          {/* Main Tipping Area */}
           <main className="w-full md:w-3/4">
             {selectedStaff ? (
               <TipForm 
-                key={selectedStaff} // Add key to reset form state when staff changes
+                key={selectedStaff}
                 selectedStaff={selectedStaff}
               />
             ) : (
@@ -108,7 +105,7 @@ const PaymentsPage: React.FC = () => {
             )}
           </main>
       </div>
-      <Toaster /> {/* Needed for useToast hook */} 
+      <Toaster />
     </div>
   );
 };

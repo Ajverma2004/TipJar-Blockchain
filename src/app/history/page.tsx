@@ -23,15 +23,15 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 
-// Define the structure of a payment object based on the API response
+
 interface Payment {
-  id: string; // combination of txHash-logIndex
+  id: string; 
   tipper: string;
   staffName: string;
   message: string;
-  amount: string; // Formatted as "X.XXX ETH"
+  amount: string;
   transactionHash: string;
-  timestamp: number; // Unix timestamp in milliseconds
+  timestamp: number; 
 }
 
 const SEPOLIA_EXPLORER_BASE_URL = "https://sepolia.etherscan.io";
@@ -195,7 +195,7 @@ const HistoryPage: React.FC = () => {
           </div>
         </CardContent>
       </Card>
-      {/* Removed redundant back button as it's now in the header */}
+  
     </div>
   );
 };

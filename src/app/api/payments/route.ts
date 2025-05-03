@@ -3,39 +3,34 @@ import { ethers, Log, Contract, formatUnits, JsonRpcProvider } from 'ethers'; //
 import TipJarABI from '@/abi/TipJar.json';
 
 // --- CONFIGURATION --- 
-// Use the correct contract address deployed on Sepolia
+
 const TIP_JAR_CONTRACT_ADDRESS = '0xD9DE838d3664B954c3025f050287d02E15eA18BC'; // Updated Address
 
-// Use Alchemy Sepolia RPC URL from environment variable.
-// Ensure SEPOLIA_RPC_URL is set in your .env.local file:
-// SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/YOUR_ALCHEMY_API_KEY
+
 const RPC_URL = process.env.SEPOLIA_RPC_URL;
 
 // ---------------------
 
-// Interface matching the structure of the decoded event log data
+// --- INTERFACES ---
 interface TipReceivedLogData {
     tipper: string;
-    staffAddress: string; // ABI uses staffAddress now
+    staffAddress: string; 
     staffName: string;
     message: string;
     amount: bigint; 
-    // Timestamp is not directly in the event data, fetched from block later
 }
 
 // Interface for the final formatted payment data sent to the frontend
 interface Payment {
-  id: string; // txHash-logIndex
+  id: string; 
   tipper: string;
   staffName: string;
   message: string;
-  amount: string; // Formatted string like "0.01 ETH"
+  amount: string;
   transactionHash: string;
-  timestamp: number; // Milliseconds since epoch
+  timestamp: number;
 }
 
-// Ethers Log type might not explicitly list 'index', so we extend it if necessary or use 'any'
-// For simplicity, we'll adjust the check directly.
 
 export async function GET() {
   console.log(`[API GET /api/payments] Start. Fetching history for ${TIP_JAR_CONTRACT_ADDRESS}`);

@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 
 interface StaffListProps {
-  // Rename prop for clarity, ensure it's always an array
+  
   staffNames: string[]; 
   onSelectStaff: (staffName: string) => void; // Match prop name in PaymentsPage
   selectedStaff: string | null;
@@ -25,8 +25,8 @@ const StaffList: React.FC<StaffListProps> = ({ staffNames, onSelectStaff, select
             <Button
               key={staffName}
               variant={selectedStaff === staffName ? "secondary" : "outline"}
-              onClick={() => onSelectStaff(staffName)} // Use correct prop name
-              className="w-full justify-start" // Make buttons full width
+              onClick={() => onSelectStaff(staffName)} 
+              className="w-full justify-start" // Full width and left-aligned text
             >
               {staffName}
             </Button>

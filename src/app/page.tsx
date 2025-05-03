@@ -25,10 +25,13 @@ const HomePage: React.FC = () => {
             <Card className="w-full max-w-lg shadow-xl rounded-xl overflow-hidden">
                 <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6">
                     <div className="flex items-center space-x-4">
-                        <Avatar className="w-12 h-12 border-2 border-white bg-gradient-to-tr from-pink-400 to-orange-400 rounded-full flex items-center justify-center"> 
-                            {/* Colorful Fallback */} 
-                            <AvatarFallback className="text-white font-bold text-xl">TJ</AvatarFallback>
-                        </Avatar>
+                    <Avatar className="w-12 h-12 border-2 border-white rounded-full overflow-hidden">
+                        <AvatarFallback className="w-full h-full flex items-center justify-center bg-gradient-to-tr from-blue-500 to-purple-500 text-white font-bold text-xl">
+                            TJ
+                        </AvatarFallback>
+                    </Avatar>
+
+
                         <div>
                             <CardTitle className="text-3xl font-bold">Welcome to TipJar!</CardTitle>
                             <CardDescription className="text-blue-100">Send tips directly on the blockchain.</CardDescription>

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'TipJar DApp', // Changed Title
-  description: 'Tip staff directly using blockchain', // Changed Description
+  title: 'TipJar DApp', 
+  description: 'Tip staff directly using blockchain', 
 };
 
 export default function RootLayout({
@@ -25,7 +25,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* Apply fade-in animation to the main content area */}
         <main className="animate-fade-in">
             {children}
         </main>
