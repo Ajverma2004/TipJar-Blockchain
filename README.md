@@ -14,16 +14,6 @@ A decentralized Ethereum-based tipping application that enables users to tip sta
 
 ---
 
-## 📸 Screenshots
-
-<!-- Include if available -->
-
-* Tip Form Page
-* Transaction History Page
-* Etherscan Transaction View
-
----
-
 ## 🛠 Tech Stack
 
 ### Frontend:
